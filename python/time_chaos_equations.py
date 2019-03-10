@@ -12,7 +12,7 @@ DPPREG = Equation(np.array([0.01, 0.020694, 0.025791, 0.038996]),
     lambda x, y, t: x*x-y*y-t*t-x*y+y*t-x+y)
 
 
-RMCQDI = Equation(np.array([-0.279089, -0.178329]),
+RMCQDI = Equation(np.linspace(-0.279089, -0.178329, 10),
     lambda x, y, t: x*x-y*y-t*t-x-t,
     lambda x, y, t: y*y+t*t-x*y-y-t)
 
@@ -22,7 +22,7 @@ LDNMGQ = Equation(np.array([0.107979, 0.108236]),
     lambda x, y, t: -x*y+x*t+y+t)
 
 
-RANDOM = Equation(np.array([0, 0.5, 1]),
+RANDOM = Equation(np.linspace(-1.5, 1.5, 11),
     lambda x, y, t: x+y*t,
     lambda x, y, t: x-y*t)
 
