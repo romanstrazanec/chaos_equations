@@ -5,10 +5,10 @@ There are 2 formulas chosen in 2D space describing *x* and *y* coordinates, whic
 We apply the formulas to calculate new x, y coordinates repeatedly *n* times to see the outcome of the created *chaos equation*.
 
 * Example:
-1. Start at position: `[x,y] = [1,1]`
-1. Define a constant: `T = 3`
-1. Formula for new x: `new_x = x + y*T`
-1. Formula for new y: `new_y = x - y*T`
+1. Start at position: *[x,y] = [1,1]*
+1. Define a constant: *T = 3*
+1. Formula for new x: *new_x = x + y\*T*
+1. Formula for new y: *new_y = x - y\*T*
 1. Count new *x, y* repeatedly *n* times and observe
 
 * Python Code:
@@ -53,6 +53,8 @@ for i in range(1, n+1): # repeat n times
 10. iteration [x, y] = [-32, 32]
 ```
 
+Slight changes to the constant value has sometimes distinctive outcome. 
+
 ---
 
 ### Point movement vs. Equation movement
@@ -73,9 +75,37 @@ Minimalizing differences between the constants results to more detailed movement
 
 A chaos equation, where a constant is represented by "**time**". The initial coordinates start at an arbitrary *time* value (can be negative). The equations are applied repeatedly to calculate new coordinates. Time changes at given *speed* and new point movements are calculated. Commonly we want to visualize the equation movement.
 
+These equations are explained and visualized in the video in the [video](#references) mentioned below.
+
 ---
 
 ### Lorenz system
+
+The Lorenz system is a system of ordinary differential equations first studied by Edward Lorenz. It is notable for having chaotic solutions for certain parameter values and initial conditions. In particular, the Lorenz attractor is a set of chaotic solutions of the Lorenz system which, when plotted, resemble a butterfly or figure eight. ([Wikipedia](https://en.wikipedia.org/wiki/Lorenz_system))
+
+![lorenzplot](./images/lorenzplot.png)
+
+The Lorenz system is represented in 3D space with 3 differential equations for *x, y, z*. It uses the values *10, 28, 8/3* for the constants *S, R, B* respectively.
+```
+dx/dt = S*(y - x)
+dy/dt = x*(R - z) - y
+dz/dt = x*y - B*z
+```
+
+This system can be represented by *Time chaos equation*.
+
+```python
+dx = dt * (S*(y - x))
+dy = dt * (x*(R - z) - y)
+dz = dt * (x*y - B*z)
+
+new_x = x + dx   # new_x = x + dt * (S*(y - x))
+new_y = y + dy   # new_y = y + dt * (x*(R - z) - y)
+new_z = z + dz   # new_z = z + dt * (x*y - B*z)
+```
+
+The visualization of *The Lorenz system* was created in Processing by [CodingTrain](https://github.com/CodingTrain). <small>([Video link](https://www.youtube.com/watch?v=f0lkz2gSsIk), 
+[Source code](https://github.com/CodingTrain/website/blob/master/CodingChallenges/CC_012_LorenzAttractor/Processing/CC_012_LorenzAttractor/CC_012_LorenzAttractor.pde))</small>
 
 ### Mandelbrot set
 
